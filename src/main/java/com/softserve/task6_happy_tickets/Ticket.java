@@ -1,9 +1,10 @@
 package com.softserve.task6_happy_tickets;
 
-public class Ticket {
+public class Ticket implements Comparable<Ticket> {
     private int number;
 
-    Ticket(int number) {
+    public Ticket(int number){
+        if (number < 0) throw new IllegalArgumentException();
         this.number = number;
     }
 
@@ -14,5 +15,10 @@ public class Ticket {
     @Override
     public String toString() {
         return "Ticket№ " + String.format("%06d",number);
+    }
+
+    @Override
+    public int compareTo(Ticket o) {
+        return this.getNumber() - o.getNumber();
     }
 }

@@ -1,13 +1,14 @@
 package com.softserve.task6_happy_tickets;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 class CounterOfLuckyTicket {
     private Ticket first;
     private Ticket last;
-    private int easyWay;
-    private int difficultWay;
+    public int easyWay;
+    public int difficultWay;
 
     private static final int NUMBER_LENGTH = 6;
     private static final int AMOUNT_TICKETS = 2;
@@ -19,10 +20,9 @@ class CounterOfLuckyTicket {
         difficultWay = countDifficultWay();
     }
 
-    static CounterOfLuckyTicket create(){
-        List<Ticket> result = InputData.inputTicketsNumbers(AMOUNT_TICKETS);
-        if (result.get(0).getNumber() > result.get(1).getNumber()) Collections.reverse(result);
-        return new CounterOfLuckyTicket(result);
+    public static CounterOfLuckyTicket create(List<Ticket> inputTickets) {
+        Collections.sort(inputTickets);
+        return new CounterOfLuckyTicket(inputTickets);
     }
 
     private int countEasyWay() {
@@ -30,7 +30,7 @@ class CounterOfLuckyTicket {
         int last = this.last.getNumber();
         int count = 0;
         for (int i = first; i <= last; i++) {
-            if (isEasyWayHappy(numberToArray(i))) count++;
+            if (isEasyWayLucky(numberToArray(i))) count++;
         }
         return count;
     }
@@ -40,7 +40,7 @@ class CounterOfLuckyTicket {
         int last = this.last.getNumber();
         int count = 0;
         for (int i = first; i <= last; i++) {
-            if (isDifficultWayHappy(numberToArray(i))) count++;
+            if (isDifficultWayLucky(numberToArray(i))) count++;
         }
         return count;
     }
@@ -55,7 +55,7 @@ class CounterOfLuckyTicket {
         return result;
     }
 
-    private static boolean isEasyWayHappy(int[] arrayNumber) {
+    private static boolean isEasyWayLucky(int[] arrayNumber) {
         int firstHalfSum = 0;
         int lastHalfSum = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
@@ -65,26 +65,17 @@ class CounterOfLuckyTicket {
         return firstHalfSum == lastHalfSum;
     }
 
-    private static boolean isDifficultWayHappy(int[] arrayNumber){
+    private static boolean isDifficultWayLucky(int[] arrayNumber) {
         int evenSum = 0;
         int oddSum = 0;
-        for (int i = 0; i < NUMBER_LENGTH; i++){
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (i % 2 == 0) evenSum += arrayNumber[i];
             else oddSum += arrayNumber[i];
         }
         return evenSum == oddSum;
     }
 
-    void getResult(){
-        if (easyWay > difficultWay){
-            System.out.println("Easy way won");
-            System.out.println("Between tickets are " + easyWay + " lucky." );
-        } else if (easyWay < difficultWay){
-            System.out.println("Difficult way won");
-            System.out.println("Between tickets are " + difficultWay + " lucky." );
-        } else {
-            System.out.println("Ways are equal");
-            System.out.println("Between tickets are " + easyWay + " lucky." );
-        }
+    public int getResult() {
+        return easyWay - difficultWay;
     }
 }

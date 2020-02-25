@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class DataValidatorTest {
-    @Parameterized.Parameters(name = "{index}:IsCorrectForTicket({123456}=true)")
+    @Parameterized.Parameters(name = "{index}: isCorrectForTicket( {0} ) - {1}")
     public static Collection<Object[]> data(){
         return Arrays.asList(new Object[][]{
             {"-123456",false},
@@ -28,7 +28,6 @@ public class DataValidatorTest {
         testInput = input;
         testExpected = expected;
     }
-
 
     @Test
     public void testIsCorrectForTicket() {

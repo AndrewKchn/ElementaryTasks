@@ -1,7 +1,5 @@
 package com.softserve.task6_happy_tickets;
 
-import com.softserve.util.Display;
-
 /*
 Lucky tickets.
 
@@ -20,13 +18,13 @@ Lucky tickets.
 
 public class MainTicket {
 
-    private static final String INFO = "This program can calculate the number of lucky tickets between two given.";
-    private static final String END = "Thank you. Bye.";
 
     public static void main(String[] args) {
-        Display.show(INFO);
-        CounterOfLuckyTicket counter = CounterOfLuckyTicket.create();
-        counter.getResult();
-        Display.show(END);
+
+        ConsoleUI consoleTickets = new ConsoleUI();
+        consoleTickets.inputTicketsForCount();
+        CounterOfLuckyTicket counter = CounterOfLuckyTicket.create(consoleTickets.getDataForCounter());
+        consoleTickets.showResult(counter);
+
     }
 }
