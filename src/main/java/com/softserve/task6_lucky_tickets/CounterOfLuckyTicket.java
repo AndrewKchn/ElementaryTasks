@@ -1,6 +1,5 @@
-package com.softserve.task6_happy_tickets;
+package com.softserve.task6_lucky_tickets;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

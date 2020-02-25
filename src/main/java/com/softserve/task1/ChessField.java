@@ -1,14 +1,14 @@
 package com.softserve.task1;
 
 public class ChessField {
-    private int coordinateWidth;
+    private char coordinateWidth;
     private int coordinateHeight;
     private String color;
 
     private final static String BLACK = "*";
     private final static String WHITE = " ";
 
-    ChessField(int width, int height) {
+    ChessField(char width, int height) {
         this.coordinateWidth = width;
         this.coordinateHeight = height;
         paintChessField();
@@ -21,10 +21,6 @@ public class ChessField {
 
     int getCoordinateWidth() {
         return coordinateWidth;
-    }
-
-    int getCoordinateHeight() {
-        return coordinateHeight;
     }
 
     @Override

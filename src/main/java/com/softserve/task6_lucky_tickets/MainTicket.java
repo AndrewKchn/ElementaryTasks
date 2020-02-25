@@ -1,4 +1,4 @@
-package com.softserve.task6_happy_tickets;
+package com.softserve.task6_lucky_tickets;
 
 /*
 Lucky tickets.

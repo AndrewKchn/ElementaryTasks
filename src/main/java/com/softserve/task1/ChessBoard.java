@@ -6,17 +6,19 @@ import java.util.List;
 public class ChessBoard {
 
     private List<ChessField> playField = new ArrayList<>();
-    private ChessField size;
+    private int[] size = new int[2];// [{width,height}]
 
 
     private ChessBoard() {
     }
 
-    static ChessBoard create(ChessField size) {
+    public static ChessBoard create(int[] size) {
         ChessBoard result = new ChessBoard();
         result.size = size;
-        for (int h = 0; h < size.getCoordinateHeight(); h++) {
-            for (int w = 0; w < size.getCoordinateWidth(); w++) {
+        int boardWidth = size[0] + 'a' - 1;
+        int boardHeight = size[1];
+        for (int h = 1; h <= boardHeight; h++) {
+            for (char w = 'a'; w <= boardWidth; w++) {
                 result.playField.add(new ChessField(w,h));
             }
         }
@@ -26,9 +28,10 @@ public class ChessBoard {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (ChessField c : playField) {
-            if (c.getCoordinateWidth() == size.getCoordinateWidth() - 1) result.append(c).append("\n");
-            else result.append(c);
+        char maxWidthCoordinate = (char)('a' + size[0] - 1);
+        for (ChessField cf : playField) {
+            if (cf.getCoordinateWidth() == maxWidthCoordinate) result.append(cf).append("\n");
+            else result.append(cf);
         }
         return new String(result);
     }
