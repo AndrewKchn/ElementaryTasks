@@ -1,30 +1,30 @@
 package com.softserve.task1;
 
 public class ChessField {
-    private int width;
-    private int height;
+    private int coordinateWidth;
+    private int coordinateHeight;
     private String color;
 
     private final static String BLACK = "*";
     private final static String WHITE = " ";
 
     ChessField(int width, int height) {
-        this.width = width;
-        this.height = height;
+        this.coordinateWidth = width;
+        this.coordinateHeight = height;
         paintChessField();
     }
 
     private void paintChessField() {
-        if ((this.width + this.height) % 2 == 0) color = BLACK;
+        if ((this.coordinateWidth + this.coordinateHeight) % 2 == 0) color = BLACK;
         else color = WHITE;
     }
 
-    int getWidth() {
-        return width;
+    int getCoordinateWidth() {
+        return coordinateWidth;
     }
 
-    int getHeight() {
-        return height;
+    int getCoordinateHeight() {
+        return coordinateHeight;
     }
 
     @Override

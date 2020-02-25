@@ -5,9 +5,9 @@ import com.softserve.util.Display;
 
 class InputData {
 
-    private static String ERROR_MESSAGE = "Board sizes must be integer values greater than zero. Please try again.";
-    private static String MESSAGE_WIDHT = "Please enter a board width.";
-    private static String MESSAGE_HEIGHT = "Please enter a board height.";
+    private static final String ERROR_MESSAGE = "Board sizes must be integer values greater than zero. Please try again.";
+    private static final String MESSAGE_WIDHT = "Please enter a board width.";
+    private static final String MESSAGE_HEIGHT = "Please enter a board height.";
 
     private static boolean dataIsCorrect(String inputDate) {
         int data;
